@@ -3,6 +3,8 @@
 ```dockerfile
 # Dockerfile.jupyter
 FROM jupyter/base-notebook:latest
+RUN mkdir /home/jovyan/logs
+RUN chown -R jovyan:users /home/jovyan/logs
 # 將當前目錄掛載到 container 的工作目錄
 WORKDIR /home/jovyan/work
 ```
