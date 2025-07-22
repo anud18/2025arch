@@ -33,6 +33,7 @@ services:
             - "8888:8888"
         volumes:
             - ./notebooks:/home/jovyan/work
+            - logs:/home/jovyan/logs
         command: start-notebook.sh --NotebookApp.token=''
 
     tensorboard:
@@ -41,8 +42,10 @@ services:
         ports:
             - "6006:6006"
         volumes:
-            - ./logs:/home/tensorboard/logs
+            - logs:/home/tensorboard/logs
         command: tensorboard --logdir=/home/tensorboard/logs --host=0.0.0.0
+volumes:
+    logs:
 ```
 
 ```bash
